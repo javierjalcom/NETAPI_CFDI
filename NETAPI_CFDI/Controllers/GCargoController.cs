@@ -159,6 +159,16 @@ namespace NETAPI_CFDI.Controllers
 
 
                 }
+                if (ldtb_Result.Rows.Count ==0)
+                {
+                    retuobject.status = "NotFound";
+                    string ljsonb = JsonConvert.SerializeObject(retuobject);
+                    //HttpStatusCode.OK;
+                    var responseb = this.Request.CreateResponse(HttpStatusCode.NotFound);
+                    responseb.Content = new StringContent(ljsonb, Encoding.UTF8, "application/json");
+                    return responseb;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -169,6 +179,13 @@ namespace NETAPI_CFDI.Controllers
                 //else
                 //    return "0";
                 //return Dt_RetrieveErrorTable(strError);
+
+                retuobject.status = "BadRequest";
+                string ljsonb = JsonConvert.SerializeObject(retuobject);
+                //HttpStatusCode.OK;
+                var responseb = this.Request.CreateResponse(HttpStatusCode.BadRequest);
+                responseb.Content = new StringContent(ljsonb, Encoding.UTF8, "application/json");
+                return responseb;
             }
             finally
             {
@@ -176,11 +193,12 @@ namespace NETAPI_CFDI.Controllers
             }
             // return ldtb_Result;
             //return JsonConvert.SerializeObject(retuobject);
-
+            retuobject.status = "OK";
             string ljson = JsonConvert.SerializeObject(retuobject);
-
-            //var response = this.Request.CreateResponse(HttpStatusCode.OK);
-            var response = this.Request.CreateResponse();
+            
+            //HttpStatusCode.OK;
+            var response = this.Request.CreateResponse(HttpStatusCode.OK);
+            //var response = this.Request.CreateResponse();
 
 
 
@@ -241,6 +259,7 @@ namespace NETAPI_CFDI.Controllers
         public string strProduct { get; set; }
         public bool blnIMO { get; set; }
         public bool blnSobreDim { get; set; }
+        public string status { get; set; }
 
     }
 
