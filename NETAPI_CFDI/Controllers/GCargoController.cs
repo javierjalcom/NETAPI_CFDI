@@ -260,6 +260,7 @@ namespace NETAPI_CFDI.Controllers
         public bool blnIMO { get; set; }
         public bool blnSobreDim { get; set; }
         public string status { get; set; }
+       // public decimal decWeight { get; set; }
 
     }
 
