@@ -595,6 +595,7 @@ namespace NETAPI_CFDI.Controllers
                         {
                             lobj_Contelement.strProduct = lrow["strProduct"].ToString();
                             lobj_Contelement.strContainerId = lrow["strContainerId"].ToString();
+                            lobj_Contelement.strType = lrow["strType"].ToString();
                             // el lleno en strign 
                             lstr_data = lrow["isFull"].ToString();
 
@@ -796,6 +797,7 @@ namespace NETAPI_CFDI.Controllers
                         {
                             lobj_Contelement.strProduct = lrow["strProduct"].ToString();
                             lobj_Contelement.strContainerId = lrow["strContainerId"].ToString();
+                            lobj_Contelement.strType  = lrow["strType"].ToString();
                             // el lleno en strign 
                             lstr_data = lrow["isFull"].ToString();
 
@@ -807,8 +809,7 @@ namespace NETAPI_CFDI.Controllers
                             {
                                 lobj_Contelement.blnFull = false;
                             }
-
-
+                            
 
                         }
                         catch (Exception ex)
@@ -846,6 +847,8 @@ namespace NETAPI_CFDI.Controllers
                             listcontainer.Add(lobj_Contelement);
                         } //if  (lobj_Contelement.lngContainerUniversalId > 0)
                     }  // foreach
+
+
 
 
                 } //  if (ldtb_Result.Rows.Count >0 && ldtb_Result.Columns.Count > 1)
